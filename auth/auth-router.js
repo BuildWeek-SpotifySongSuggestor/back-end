@@ -8,6 +8,16 @@ const { isValid } = require("../utils/validate.js");
 const { BCRYPT_ROUNDS } = require('../vars/vars.js');
 const { makeJwt } = require('../utils/jwt.js');
 
+//get request for heroku test
+server.get('/register', (req, res) => {
+  res.status(200).json({ Register: 'get request working' });
+});
+
+//get request for heroku test
+server.get('/login', (req, res) => {
+  res.status(200).json({ Login: 'get request working' });
+});
+
 router.post("/register", (req, res) => {
   const credentials = req.body;
 

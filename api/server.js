@@ -17,6 +17,11 @@ server.use(
     })
 );
 
+//get request for heroku test
+server.get('/', (req, res) => {
+  res.status(200).json({ API: 'Up ad running' });
+});
+
 server.use("/api/auth", authRouter);
 server.use("/api/users", usersRouter);
 server.use('/api/tracks', tracksRouter);
