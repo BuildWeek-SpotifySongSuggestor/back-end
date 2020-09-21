@@ -2,7 +2,6 @@ const router = require('express').Router();
 const SpotifyWebApi = require('spotify-web-api-node');
 const { CLIENT_ID, CLIENT_SECRET } = require('../vars/vars.js');
 
-// search for tracks
 router.get('/:search', (req, res) => {
   const { search } = req.params;
   
@@ -28,8 +27,6 @@ router.get('/:search', (req, res) => {
       });
 });
 
-
-// get single track
 router.get('/:id/single', (req, res) => {
   const { id } = req.params;
 
