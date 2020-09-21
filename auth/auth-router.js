@@ -9,12 +9,12 @@ const { BCRYPT_ROUNDS } = require('../vars/vars.js');
 const { makeJwt } = require('../utils/jwt.js');
 
 //get request for heroku test
-server.get('/register', (req, res) => {
+router.get('/register', (req, res) => {
   res.status(200).json({ Register: 'get request working' });
 });
 
 //get request for heroku test
-server.get('/login', (req, res) => {
+router.get('/login', (req, res) => {
   res.status(200).json({ Login: 'get request working' });
 });
 
