@@ -6,9 +6,10 @@ module.exports = {
   makeJwt,
 }
 
-function makeJwt({ id, username }) {
+function makeJwt({ id, username, email }) {
   const payload = {
       username,
+      email,
       subject: id,
   };
   const config = {
