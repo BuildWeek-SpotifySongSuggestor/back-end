@@ -22,7 +22,7 @@ router.post("/register", (req, res) => {
   const credentials = req.body;
 
   if (isValid(credentials)) {
-      const salt = bcryptjs.genSaltSync(BCRYPT_ROUNDS);
+      const salt = bcryptjs.genSaltSync(Number(BCRYPT_ROUNDS));
       const hash = bcryptjs.hashSync(credentials.password, salt);
 
       credentials.password = hash;
