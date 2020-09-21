@@ -53,4 +53,30 @@ router.get('/:id/single', (req, res) => {
         });
 });
 
+router.post('/recover', (req, res) => {
+  const { ids } = req.body;
+
+  const spotifyApi = new SpotifyWebApi({
+    clientId: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+  });
+
+  spotifyApi
+    .clientCredentialsGrant()
+      .then(data => {
+          spotifyApi.setAccessToken(data.body['access_token']);
+          
+          return  spotifyApi.getTracks(ids)
+        })
+        .then(data => {
+          res.status(200).json(data.body)
+        })
+        .catch(error => {
+          res.status(500).json({
+            message: 'Whoops! we encountered a problem :(', 
+            error: error.message
+          });
+        });
+});
+
 module.exports = router;
