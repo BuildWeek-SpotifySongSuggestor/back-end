@@ -29,4 +29,31 @@ router.get('/:search', (req, res) => {
 });
 
 
+// get single track
+router.get('/:id/single', (req, res) => {
+  const { id } = req.params;
+
+  const spotifyApi = new SpotifyWebApi({
+    clientId: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+  });
+
+  spotifyApi
+    .clientCredentialsGrant()
+      .then(data => {
+          spotifyApi.setAccessToken(data.body['access_token']);
+          
+          return  spotifyApi.getTrack(id)
+        })
+        .then(data => {
+          res.status(200).json(data.body)
+        })
+        .catch(error => {
+          res.status(500).json({
+            message: 'Whoops! we encountered a problem :(', 
+            error: error.message
+          });
+        });
+});
+
 module.exports = router;
