@@ -8,8 +8,9 @@ module.exports = {
 };
 
 
-function get(id) {
-  return db('favorites').where({ id }).first()
+function get(user_id) {
+  return db('favorites')
+    .where({ user_id: user_id });
 }
 
 function insert(track) {
@@ -20,14 +21,14 @@ function insert(track) {
     });
 }
 
-function update(track_id, changes) {
+function update(id, changes) {
   return db('favorites')
-    .where({ track_id })
+    .where({ id })
     .update(changes)
 }
 
-function remove(track_id) {
+function remove(id) {
   return db('favorites')
-    .where({ track_id })
+    .where({ id })
     .del();
 }
