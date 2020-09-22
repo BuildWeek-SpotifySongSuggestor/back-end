@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const router = require("express").Router();
 
-const Users = require("../users/users-model.js");
+const db = require("../users/users-model.js");
 const { isValid } = require("../utils/validate.js");
 const { BCRYPT_ROUNDS } = require('../vars/vars.js');
 const { makeJwt } = require('../utils/jwt.js');
@@ -17,7 +17,7 @@ router.post("/register", (req, res) => {
 
       credentials.password = hash;
 
-      Users.add(credentials)
+      db.add(credentials)
           .then(user => {
               const token = makeJwt(user);
 
@@ -37,7 +37,7 @@ router.post("/login", (req, res) => {
   const { username, password } = req.body;
 
   if (isValid(req.body)) {
-      Users.findBy({ username: username })
+      db.findBy({ username: username })
           .then(([user]) => {
 
               if (user && bcryptjs.compareSync(password, user.password)) {
