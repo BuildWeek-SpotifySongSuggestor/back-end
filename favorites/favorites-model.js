@@ -13,11 +13,17 @@ function get(user_id) {
     .where({ user_id: user_id });
 }
 
+function getById(id) {
+  return db('favorites')
+    .where({ id })
+    .first();
+}
+
 function insert(track) {
   return db('favorites')
     .insert(track)
     .then(ids => {
-      return get(ids[0]);
+      return getById(ids[0]);
     });
 }
 
