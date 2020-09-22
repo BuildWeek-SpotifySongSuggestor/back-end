@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-// const validateTrackId = require('../mw/validate-track-id.js');
-// const validateTrack = require('../mw/validate-track.js');
 const { validateUserId } = require('../mw/validate-user.js');
 const { validateTrackId } = require('../mw/validate-track-id.js');
 const { validateTrack } = require('../mw/validate-track.js');
@@ -37,7 +35,9 @@ router.put('/:id', validateTrackId, validateTrack, (req, res) => {
   const { id } = req.params;
   db.update(id, req.body)
     .then(track => {
-      res.status(200).json(track)
+      res.status(200).json({ 
+        message: 'track successfully changed!'
+      })
     })
     .catch(error => {
       res.status(500).json({
