@@ -5,6 +5,7 @@ module.exports = {
     update,
     remove,
     get,
+    getById,
 };
 
 

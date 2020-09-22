@@ -14,7 +14,7 @@ exports.up = function(knex) {
     .createTable("favorites", tbl => {
         tbl.increments('id');
 
-        tbl.string("track_id", 64).notNullable();
+        tbl.string("spotify_id", 64).notNullable();
         tbl.integer("user_id").notNullable()
           .references("users.id")
           .onDelete("CASCADE")
