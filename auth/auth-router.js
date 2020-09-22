@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const router = require("express").Router();
 
 const db = require("../users/users-model.js");
-const { isValid } = require("../utils/validate.js");
+const { isValid } = require("../utils/is-valid.js");
 const { BCRYPT_ROUNDS } = require('../vars/vars.js');
 const { makeJwt } = require('../utils/jwt.js');
 

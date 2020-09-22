@@ -1,8 +1,13 @@
 const router = require('express').Router();
 
+// const validateTrackId = require('../mw/validate-track-id.js');
+// const validateTrack = require('../mw/validate-track.js');
+const { validateUserId } = require('../mw/validate-user.js');
+const { validateTrackId } = require('../mw/validate-track-id.js');
+const { validateTrack } = require('../mw/validate-track.js');
 const db = require('./favorites-model.js');
 
-router.post('/', (req, res) => {
+router.post('/', validateTrack, (req, res) => {
   db.insert(req.body)
     .then(track => {
       res.status(201).json(track)
@@ -14,7 +19,7 @@ router.post('/', (req, res) => {
     })
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', validateUserId, (req, res) => {
   const { id } = req.params;
 
   db.get(id)
@@ -28,7 +33,7 @@ router.get('/:id', (req, res) => {
     })
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', validateTrackId, validateTrack, (req, res) => {
   const { id } = req.params;
   db.update(id, req.body)
     .then(track => {
@@ -41,7 +46,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', validateTrackId, (req, res) => {
   const { id } = req.params;
   db.remove(id)
     .then(success => {
