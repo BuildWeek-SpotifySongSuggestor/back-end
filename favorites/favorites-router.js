@@ -50,13 +50,13 @@ router.delete('/:id', validateTrackId, (req, res) => {
   const { id } = req.params;
   db.remove(id)
     .then(success => {
-      res.status(201).json({
+      res.status(200).json({
         message: "successfully removed"
       })
-      .catch(error => {
-        res.status(500).json({
-          message: "Whoops! there was an error while removing track :("
-        });
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Whoops! there was an error while removing track :("
       });
     });
 });

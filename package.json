@@ -32,10 +32,11 @@
     "pg": "^8.3.3",
     "querystring": "^0.2.0",
     "spotify-web-api-node": "^4.0.0",
-    "sqlite3": "^5.0.0",
-    "supertest": "^4.0.2"
+    "sqlite3": "^5.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
   }
 }
