@@ -64,6 +64,7 @@ describe('server', () => {
   });
 
   describe('POST /api/auth/register', () => {
+    
     beforeEach(async () => {
       await db("users").truncate();
     });
@@ -174,6 +175,7 @@ describe('server', () => {
   });
   
   describe('DELETE /api/favorites/:id', () => {
+    
     it("should return HTTP status code 200", () => {
       return supertest(server)
           .delete("/api/favorites/8")
