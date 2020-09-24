@@ -46,7 +46,7 @@
 ##	- gets data for a specific track
 ##	- must pass the spotify id in the url
 
-## POST https://bwspotify.herokuapp.com/api/favorites/recover
+## POST https://bwspotify.herokuapp.com/api/tracks/recover
 
 ##	- gets a list of tracks 
 ##	- must provide an array of spotify ids in the form of...
